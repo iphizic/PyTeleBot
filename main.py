@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
 # config = config.defaultConfiguration()
 # config.setProtocol(reply)
-# request.setSslConfiguration(config.defaultConfiguration())
+ request.setSslConfiguration(QSslConfiguration.defaultConfiguration())
  request.setUrl(QUrl("https://api.telegram.org/bot182003178:AAFMJGLwIHW4zGBNhwr0hwOXyIkObyP9ZTU/getUpdates"));
  request.setHeader(QNetworkRequest.ServerHeader, "application/json")
 
