@@ -1,32 +1,27 @@
-from PyQt5 import QtCore, QtNetwork, QtWidgets
-from PyQt5.QtNetwork import QNetworkAccessManager
-from PyQt5.QtNetwork import QNetworkRequest
-from PyQt5.QtNetwork import QNetworkReply
-from PyQt5.QtNetwork import QSslConfiguration
+from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest, QNetworkReply, QSslConfiguration, QSsl
 from PyQt5.QtCore import QUrl
 
 
- class ForRec(object):
+class ForRec(QNetworkAccessManager):
 	def Reqest(self,reply):
 		print(reply.readAll())
-	return None
    
 
 if __name__ == '__main__':
 
- manager = QNetworkAccessManager
- request = QNetworkRequest 
-# reply = QSslConfiguration(QSsl.TlsV1_2
+	url = "https://api.telegram.org/bot"
 
- config = QSslConfiguration
+	manager = QNetworkAccessManager()
+	request = QNetworkRequest()
 
-# config = config.defaultConfiguration()
-# config.setProtocol(reply)
- request.setSslConfiguration(QSslConfiguration.defaultConfiguration())
- request.setUrl(QUrl("https://api.telegram.org/bot182003178:AAFMJGLwIHW4zGBNhwr0hwOXyIkObyP9ZTU/getUpdates"));
- request.setHeader(QNetworkRequest.ServerHeader, "application/json")
+	config = QSslConfiguration.defaultConfiguration()
+	config.setProtocol(QSsl.SecureProtocols)
 
- manager.get(request)
+	request.setSslConfiguration(config)
+	request.setUrl(QUrl(url));
+	request.setHeader(QNetworkRequest.ServerHeader, "getUpdates")
+
+	#manager.get(request)
 
 
 
